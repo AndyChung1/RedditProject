@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= subreddit.name %></title>
+</head>
+<body>
+    <h1>Welcome to the <%= subreddit.name %> subreddit</h1>
+    <ul>
+        <% for (let post of subreddit.posts) { %>
+            <li><a href="/subreddits/<%= subreddit.name %>/<%= post._id %>"><%= post.title %></a></li>
+        <% } %>
+    </ul>
+    <div>
+        <a href="/subreddits/<%= subreddit.name %>/new">New Post</a>
+    </div>
+    <div>
+        <a href="/subreddits">Back to Subreddits</a>
+    </div>
+        <form action="/subreddits/<%= subreddit._id %>?_method=DELETE" method="POST">
+        <button>Delete Subreddit</button>
+    </form>
+</body>
+</html>
