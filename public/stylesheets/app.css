@@ -1,0 +1,56 @@
+.container {
+    max-width: 85%;
+}
+
+.dark-bg {
+    background-color: #1A1A1B;
+}
+
+.less-dark-bg {
+    background-color: #303030;
+}
+
+p, h1, h5, h6, label, .off-white {
+    color: #f2f2f2;
+}
+
+.sidebar {
+    background-color: #303030;
+    width: 17%;
+    height: 100%;
+    position: absolute;
+    top: 57px;
+    left: 0;
+    overflow-y: scroll;
+    padding-top: 25px;
+}
+
+.sidebar-item, .sidebar-item:hover {
+    color: #f2f2f2;
+    position: relative;
+    display: flex;
+    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+.sidebar h5 {
+    padding-left: 20px;
+}
+
+.sidebar-div:hover {
+    background-color: rgb(62, 62, 62);
+}
+
+textarea::placeholder {
+    color: black;
+}
+
+/* @media (max-width: 1250px) {
+    .sidebar {
+        display: none;
+    }
+} */

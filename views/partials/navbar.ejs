@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+            <a class="navbar-brand" href="/">Reddit</a>
+        </div>
+        <form class="d-flex ml-auto flex-grow-1" role="search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <div class="collapse navbar-collapse flex-row-reverse">
+
+            <div class="navbar-nav ">
+                <% if (!currentUser) { %>
+                    <a href="/login" class="nav-item nav-link">Log in</a>
+                    <a href="/register" class="nav-item nav-link">Sign up</a>
+                <% } else { %>
+                    <a href="/logout" class="nav-item nav-link">Log out</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

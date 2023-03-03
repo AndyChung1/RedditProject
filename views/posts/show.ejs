@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= post.title %></title>
-</head>
-<body>
-    <h1><%= post.title %></h1>
-    <p><%= post.content %></p>
-    <div>
-        <a href="/subreddits/<%= subreddit.name %>/<%= post._id %>/edit">Edit</a>
+<% layout('layouts/boilerplate') %>
+<title><%= subreddit.name %></title>
+<div class="container">
+    <%- include('../partials/sidebar') %>
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-6">
+            <a href="/subreddits/<%= subreddit.name %>" class="btn btn-dark rounded-pill">&laquo; Back to <%= subreddit.name %></a>
+            <div class="media position-relative less-dark-bg border border-secondary rounded my-3">
+                <div class="media-body m-2">
+                    <h5 class="off-white mt-0"><%= post.title %></h5>
+                    <p class="off-white"><%= post.content %></p>
+                </div>
+            </div>
+            <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete Post</button>
+            </form>            
+        </div>
+        <div class="col"></div>
     </div>
-    <div>
-        <a href="/subreddits/<%= subreddit.name %>">Back to <%= subreddit.name %></a>
-    </div>
-    <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>?_method=DELETE" method="POST">
-        <button>Delete Post</button>
-    </form>
-    
-</body>
-</html>
+</div>
+

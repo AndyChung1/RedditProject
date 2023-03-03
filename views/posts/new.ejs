@@ -1,21 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post</title>
-</head>
-<body>
-    <h1>Create a Post</h1>
-    <form action="/subreddits/<%= subreddit.name %>" method="POST">
-        <div>
-            <input type="text" name="title" id="title">
+<% layout('layouts/boilerplate') %>
+<title>New Post</title>
+<div class="container">
+    <%- include('../partials/sidebar') %>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <h1 class="mt-5">Submit a Post</h1>
+            <form action="/subreddits/<%= subreddit.name %>" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="title" id="title">
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea type="text" class="form-control" name="content" id="content">
+                    </textarea>
+                </div>
+                <button class="btn btn-primary">Submit post</button>
+            </form>
         </div>
-        <div>
-            <textarea name="content" id="content"></textarea>
-        </div>
-        <button>Submit Post</button>
-    </form>
-</body>
-</html>
+        <div class="col"></div>
+    </div>
+</div>

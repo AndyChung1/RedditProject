@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= subreddit.name %></title>
-</head>
-<body>
-    <h1>Welcome to the <%= subreddit.name %> subreddit</h1>
-    <ul>
-        <% for (let post of subreddit.posts) { %>
-            <li><a href="/subreddits/<%= subreddit.name %>/<%= post._id %>"><%= post.title %></a></li>
-        <% } %>
-    </ul>
-    <div>
-        <a href="/subreddits/<%= subreddit.name %>/new">New Post</a>
+<% layout('layouts/boilerplate') %>
+<title><%= subreddit.name %></title>
+<div class="container mt-5">
+    <h1 class="text-center"><%= subreddit.name%></h1>
+    <%- include('../partials/sidebar') %>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <div class="d-flex justify-content-between media position-relative less-dark-bg border border-secondary rounded mb-3 p-3">
+                <a class="btn btn-primary rounded" href="/subreddits/<%= subreddit.name %>/new">New Post</a>
+                <form action="/subreddits/<%= subreddit._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-secondary">Delete Subreddit</button>
+                </form>
+            </div>
+            <% for (let post of subreddit.posts) { %>
+                <div class="media position-relative less-dark-bg border border-secondary rounded mb-3">
+                    <div class="media-body m-2">
+                        <h5 class="off-white mt-0"><%= post.title %></h5>
+                        <p class="off-white"><%= post.content %></p>
+                        <a href="/subreddits/<%= subreddit.name %>/<%= post._id %>" class="stretched-link"></a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <div class="col-3">
+            <div class="media position-relative less-dark-bg border border-secondary rounded">
+                <div class="media-body m-3">
+                    <h6 class="mb-3 text-muted">About <%= subreddit.name %></h6>
+                    <p class="off-white"><%= subreddit.description %></p>
+                    <p class="text-muted">Created <%= subreddit.dateCreated %></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <a href="/subreddits">Back to Subreddits</a>
-    </div>
-        <form action="/subreddits/<%= subreddit._id %>?_method=DELETE" method="POST">
-        <button>Delete Subreddit</button>
-    </form>
-</body>
-</html>
+</div>

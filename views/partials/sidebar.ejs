@@ -1,0 +1,11 @@
+<div class="sidebar">
+    <h5>Subreddits</h5>
+    <% for (let subreddit of allSubreddits) { %>
+        <div class="sidebar-div">
+            <a class="sidebar-item stretched-link" href="/subreddits/<%= subreddit.name %>"><%= subreddit.name %></a>
+        </div>
+    <% } %>
+    <div class="sidebar-div mt-3">
+        <a class="sidebar-item stretched-link" href="/subreddits/new">Create a subreddit</a>
+    </div>
+</div>
