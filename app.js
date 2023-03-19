@@ -14,6 +14,8 @@ const User = require('./models/user');
 const subredditRoutes = require('./routes/subreddits');
 const userRoutes = require('./routes/user');
 
+const expressError = require('./utils/expressError');
+
 mongoose.connect('mongodb://127.0.0.1:27017/reddit', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -70,6 +72,15 @@ app.use('/subreddits', subredditRoutes);
 
 app.get('/', (req, res) => {
     res.render('home');
+});
+
+app.all('*', (req, res, next) => {
+    next(new expressError('Page not found', 404));
+});
+
+app.use((err, req, res, next) => {
+    const {statusCode = 500, message = 'Something went wrong'} = err;
+    res.status(statusCode).render('error', {err});
 });
 
 app.listen(3000, () => {

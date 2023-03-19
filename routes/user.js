@@ -35,7 +35,7 @@ router.get('/logout', (req, res) => {
             return next(err);
         }
         req.flash('success', "Logged out");
-        res.redirect('/subreddits');
+        res.redirect('/');
     });
 })
 

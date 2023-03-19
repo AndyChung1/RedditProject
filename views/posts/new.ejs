@@ -6,15 +6,20 @@
         <div class="col"></div>
         <div class="col-6">
             <h1 class="mt-5">Submit a Post</h1>
-            <form action="/subreddits/<%= subreddit.name %>" method="POST">
+            <form action="/subreddits/<%= subreddit.name %>" method="POST" novalidate class="needs-validation">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" name="title" id="title">
+                    <input type="text" class="form-control" name="title" id="title" required>
+                    <div class="valid-feedback">
+                        Looks good
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Content</label>
-                    <textarea type="text" class="form-control" name="content" id="content">
-                    </textarea>
+                    <textarea type="text" class="form-control" name="content" id="content" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good
+                    </div>
                 </div>
                 <button class="btn btn-primary">Submit post</button>
             </form>

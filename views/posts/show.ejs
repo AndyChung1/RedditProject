@@ -8,13 +8,39 @@
             <a href="/subreddits/<%= subreddit.name %>" class="btn btn-dark rounded-pill">&laquo; Back to <%= subreddit.name %></a>
             <div class="media position-relative less-dark-bg border border-secondary rounded my-3">
                 <div class="media-body m-2">
-                    <h5 class="off-white mt-0"><%= post.title %></h5>
+                    <h5 class="off-white mt-0"><%= post.title %><span class="text-muted"> by <%= author.username %></span></h5>
                     <p class="off-white"><%= post.content %></p>
                 </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <span>
+                            <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/subreddits/<%= subreddit.name %>/<%= post._id %>/edit">Edit</a>
+                        <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>?_method=DELETE" method="POST">
+                            <button class="dropdown-item">Delete</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-danger">Delete Post</button>
-            </form>            
+            <div class="my-4">
+                <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>/comment" method="POST">
+                    <textarea type="text" class="form-control mb-2" name="content" id="content" required></textarea>
+                    <button class="btn btn-primary">Comment</button>
+                </form>
+            </div>
+            <div class="comments mb-4">
+                <% for (let comment of post.comments) { %>
+                    <div class="media position-relative less-dark-bg border border-secondary border-bottom-0 rounded">
+                        <div class="media-body m-2">
+                            <h5 class="off-white mt-0"><%= author.username %></h5>
+                            <p class="off-white"><%= comment.content %></p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
         </div>
         <div class="col"></div>
     </div>

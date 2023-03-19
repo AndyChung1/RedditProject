@@ -2,15 +2,21 @@
 <title>Edit Post</title>
 <div class="row">
     <div class="col-6 offset-3">
-        <h1>Edit Post</h1>
-        <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>?_method=PUT" method="POST">
+        <h1 class="mt-5">Edit Post</h1>
+        <form action="/subreddits/<%= subreddit.name %>/<%= post._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" value="<%= post.title %>">
+                <input type="text" class="form-control" id="title" name="title" value="<%= post.title %>" required>
+                <div class="valid-feedback">
+                    Looks good
+                </div>
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" rows="3"></textarea>
+                <textarea class="form-control" id="content" rows="3" name="content" required><%=post.content%></textarea>
+                <div class="valid-feedback">
+                    Looks good
+                </div>
             </div>
             <button class="btn btn-primary mb-3">Update Post</button>
         </form>

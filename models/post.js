@@ -11,7 +11,11 @@ const postSchema = new mongoose.Schema({
     subreddit: {
         type: Schema.Types.ObjectId,
         ref: 'Subreddit',
-    }
+    },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment',
+    }],
 });
 
 const Post = mongoose.model('Post', postSchema);

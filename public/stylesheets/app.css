@@ -18,9 +18,10 @@ p, h1, h5, h6, label, .off-white {
     background-color: #303030;
     width: 17%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 57px;
     left: 0;
+    bottom: 0;
     overflow-y: scroll;
     padding-top: 25px;
 }
@@ -47,6 +48,11 @@ p, h1, h5, h6, label, .off-white {
 
 textarea::placeholder {
     color: black;
+}
+
+.comments:last-child {
+    border-bottom: 1px solid #6c757d;
+    border-radius: .25rem;
 }
 
 /* @media (max-width: 1250px) {
